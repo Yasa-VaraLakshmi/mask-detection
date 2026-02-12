@@ -1,0 +1,6 @@
+﻿flask
+opencv-python
+tensorflow
+numpy
+pillow
+pyttsx3

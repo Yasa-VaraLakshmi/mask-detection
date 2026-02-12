@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Face Mask Detection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="ambient ambient-grid"></div>
+
+  <div class="container">
+    <header class="hero card">
+      <div class="hero-text">
+        <div class="tag">Realtime Vision Lab</div>
+        <h1>Face Mask Detection + Voice Assistant</h1>
+        <p class="subtitle">Live webcam detection with voice commands and spoken responses.</p>
+      </div>
+      <div class="hero-actions">
+        <div class="system-pill">
+          <span class="dot"></span>
+          <span>System Online</span>
+        </div>
+        <button id="startWebcam" class="secondary">Start Webcam</button>
+        <button id="stopWebcam" disabled>Stop Webcam</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card panel-webcam">
+        <div class="card-title">Live Webcam</div>
+        <div class="card-desc">Face the camera and keep your head in frame for stable predictions.</div>
+
+        <div class="video-shell">
+          <video id="video" autoplay playsinline></video>
+          <div class="video-overlay">
+            <span class="corner tl"></span>
+            <span class="corner tr"></span>
+            <span class="corner bl"></span>
+            <span class="corner br"></span>
+            <span class="scanline"></span>
+          </div>
+        </div>
+        <canvas id="canvas" class="hidden"></canvas>
+
+        <div class="status-grid">
+          <article class="status-tile">
+            <div class="status-label">Detection</div>
+            <div id="resultLabel" class="status-value neutral">Waiting...</div>
+          </article>
+          <article class="status-tile">
+            <div class="status-label">Confidence</div>
+            <div id="resultConfidence" class="status-value">-</div>
+          </article>
+          <article class="status-tile">
+            <div class="status-label">Faces</div>
+            <div id="faceCount" class="status-value">0</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="card panel-voice">
+        <div class="card-title">Voice Assistant</div>
+        <div class="card-desc">Try saying: "Is the person wearing a mask?"</div>
+
+        <div class="chat" id="chat">
+          <div class="bubble assistant">Assistant ready. Start webcam, then ask your question.</div>
+        </div>
+
+        <div class="voice-controls">
+          <button id="voiceButton" class="secondary">Start Listening</button>
+          <button id="askMaskBtn">Ask Mask Status</button>
+          <span id="voiceStatus" class="status">Idle</span>
+        </div>
+
+        <div id="voiceHint" class="voice-help">Tip: allow microphone permission in your browser for voice input.</div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
